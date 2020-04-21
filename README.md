@@ -32,3 +32,5 @@ Aidan Harris
 James Hu
 Mike Watkins
 Vivian Wang
+
+[![Codeship Status for veeveeanne/restaurants_in_cambridge](https://app.codeship.com/projects/efd17370-661f-0138-6019-7e4f61b5b52a/status?branch=master)](https://app.codeship.com/projects/393614)
