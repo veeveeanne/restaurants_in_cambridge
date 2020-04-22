@@ -6,7 +6,6 @@
   --dark-red: #62110d;
 }
 
- 
 body {
   background-color: var(--ivory);
 }
@@ -34,4 +33,14 @@ body {
 }
 .tile-container {
   margin: 30px;
+}
+
+.new_user {
+    background-color: var(--ivory);
+    padding: 20px
+}
+
+.sign_in {
+    background-color: var(--ivory);
+    padding: 20px
 }
