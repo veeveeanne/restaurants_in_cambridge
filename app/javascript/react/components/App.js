@@ -1,7 +1,11 @@
 import React from 'react'
 
+import RestaurantIndexContainer from './RestaurantIndexContainer'
+
 export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+  return (
+    <RestaurantIndexContainer />
+  )
 }
 
 export default App

@@ -1,0 +1,46 @@
+:root {
+  --red: #a01a2f;
+  --blue: #081C35;
+  --ivory: #FBF5F3;
+  --orange: #E28413; 
+  --dark-red: #62110d;
+}
+
+body {
+  background-color: var(--ivory);
+}
+
+.tile {  
+  background-color: var(--red);
+  color: var(--ivory);
+  padding-top: 20px;   
+  margin: 20px; 
+  border-radius: 10px;
+  height: 250px;
+  border: 3px solid var(--dark-red);
+}
+
+.tile-image {
+  border: 3px solid var(--dark-red);
+  display: block;
+  margin: 0 auto;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.tile-text {
+  text-align: center;
+}
+.tile-container {
+  margin: 30px;
+}
+
+.new_user {
+    background-color: var(--ivory);
+    padding: 20px
+}
+
+.sign_in {
+    background-color: var(--ivory);
+    padding: 20px
+}
