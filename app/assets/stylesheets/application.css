@@ -15,3 +15,20 @@
  *= require foundation_and_overrides
 
  */
+ :root {
+     --red: #c90016;
+     --ivory: #fbf5f3;
+     --blue: #081c35;
+     --orange: #e28413;
+     --mint: #d8e2dc;
+ }
+
+.new_user {
+    background-color: var(--ivory);
+    padding: 20px
+}
+
+.sign_in {
+    background-color: var(--ivory);
+    padding: 20px
+}
