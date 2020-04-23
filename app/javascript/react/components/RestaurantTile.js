@@ -1,7 +1,6 @@
 import React from 'react'
 
 const RestaurantTile = (props) => {
-
   return (
     <div className="tile cell small-12 medium-4 large-4">
       <img className="tile-image" src={props.restaurant.picture_url}/>
@@ -9,4 +8,5 @@ const RestaurantTile = (props) => {
     </div>
   )
 }
+
 export default RestaurantTile

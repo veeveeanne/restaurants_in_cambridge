@@ -4,4 +4,4 @@ Restaurant.create(name: "The Mad Monkfish", address: "524 Massachusetts", city: 
 Restaurant.create(name: "Veggie Galaxy", address: "450 Massachusetts Avenue", city: "Cambridge", state: "MA", zip: "02139", picture_url: "https://polishedblogger.files.wordpress.com/2017/10/img_0308-1.jpg")
 Restaurant.create(name: "Yume Wo Katare", address: "1923 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02140", picture_url: "https://s3-media0.fl.yelpcdn.com/bphoto/dwLeSf7fW87GvqP6DOOPBA/o.jpg")
 Restaurant.create(name: "Cafe Mami", address: "1815 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02140", picture_url: "https://s3-media0.fl.yelpcdn.com/bphoto/xtlAI4vG8LBkuUBuGOBf9g/o.jpg")
-
+Restaurant.create(name: "Cafe Papi", address: "1815 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02140")

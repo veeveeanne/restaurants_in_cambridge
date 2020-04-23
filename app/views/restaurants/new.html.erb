@@ -1,0 +1,27 @@
+<div class="new-restaurant-form">
+  <h3 class="form-title">Add a Cambridge Restaurant</h3>
+  <%= form_for @restaurant do |f| %>
+    <%= f.label :name %> 
+    <%= f.text_field :name %> 
+
+    <%= f.label :address %> 
+    <%= f.text_field :address %> 
+
+    <%= f.label :city %> 
+    <%= f.text_field :city %> 
+    
+    <%= f.label :state %> 
+    <%= f.text_field :state %> 
+    
+    <%= f.label :zip %> 
+    <%= f.text_field :zip %> 
+
+    <%= f.label :website %> 
+    <%= f.text_field :website %> 
+
+    <%= f.label :picture_url %> 
+    <%= f.text_field :picture_url, value: "" %> 
+
+    <%= f.submit "Add Restaurant", class: "button" %>  
+  <% end %>
+</div>
