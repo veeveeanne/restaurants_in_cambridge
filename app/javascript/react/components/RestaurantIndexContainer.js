@@ -30,13 +30,14 @@ const RestaurantIndexContainer = props => {
     )
   })
 
-return(
-  <div className="grid-container">
-    <div className="tile-container grid-x grid-margin-x">
-        {restaurantArray}
+  return(
+    <div className="grid-container">
+      <div className="tile-container grid-x grid-margin-x">
+          {restaurantArray}
+      </div>
+      <a href="/restaurants/new">Add a new restaurant</a>
     </div>
-  </div>
-)
+  )
 }
 
 export default RestaurantIndexContainer
