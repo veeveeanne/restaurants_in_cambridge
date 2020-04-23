@@ -1,22 +1,22 @@
 require "rails_helper"
 
 RSpec.describe Api::V1::RestaurantsController, type: :controller do
-  describe "GET#index" do 
+  describe "GET#index" do
     let!(:restaurant_one) { Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "https://s3-media0.fl.yelpcdn.com/bphoto/UIDbWpmwnCBi9Hvp0QJOHw/o.jpg") }
     let!(:restaurant_two) { Restaurant.create(name: "Alden & Harlow", address: "40 Brattle Street", city: "Cambridge", state: "MA", zip: "02138", picture_url: "https://s3-media0.fl.yelpcdn.com/bphoto/iDdGFQoP3BZvk2QzIt3Z0A/o.jpg") }
-    
+
     it "returns a successful response status and a content type of json" do
       get :index
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq "application/json"
     end
-    
-    it "returns all restaurants in database" do 
+
+    it "returns all restaurants in database" do
       get :index
 
       response_body = JSON.parse(response.body)
-      
+
       expect(response_body.length).to eq 2
 
       expect(response_body[0]["name"]).to eq restaurant_one.name
@@ -37,7 +37,7 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
 
   describe "GET#show" do
     let!(:restaurant_one) { Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "https://s3-media0.fl.yelpcdn.com/bphoto/UIDbWpmwnCBi9Hvp0QJOHw/o.jpg") }
-  
+
     it "returns a successful response status and a content type of json" do
       get :show, params: {id: restaurant_one.id}
 
@@ -50,7 +50,7 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
 
       response_body = JSON.parse(response.body)
 
-      expect(response_body.length).to equal 9
+      expect(response_body.length).to equal 10
       expect(response_body["name"]).to eq restaurant_one.name
       expect(response_body["address"]).to eq restaurant_one.address
       expect(response_body["city"]).to eq restaurant_one.city
