@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const RestaurantShowTile = (props) => {
   return (
     <div className="tile-show">
-      <img src={props.restaurant.picture_url}/>
+      <img src={props.restaurant.picture_url} className="tile-image"/>
       <h1>{props.restaurant.name}</h1>
       <p>{props.restaurant.address}</p>
       <p>{props.restaurant.city}</p>

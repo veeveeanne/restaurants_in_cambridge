@@ -20,6 +20,15 @@ body {
   border: 3px solid var(--dark-red);
 }
 
+.tile-show {  
+  background-color: var(--red);
+  color: var(--ivory);
+  padding-top: 20px;   
+  margin: 20px; 
+  border-radius: 10px;
+  border: 3px solid var(--dark-red);
+}
+
 .tile-image {
   border: 3px solid var(--dark-red);
   display: block;
@@ -75,3 +84,4 @@ label {
   width: 75%;
   border-radius: 10p;
 }
+
