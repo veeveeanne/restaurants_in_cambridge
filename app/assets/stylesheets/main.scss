@@ -36,11 +36,42 @@ body {
 }
 
 .new_user {
-    background-color: var(--ivory);
-    padding: 20px
+  background-color: var(--ivory);
+  padding: 20px
 }
 
 .sign_in {
-    background-color: var(--ivory);
-    padding: 20px
+  background-color: var(--ivory);
+  padding: 20px
+}
+
+.new-restaurant-form {
+  margin: 0 auto;
+  padding: 50px;
+  width: 75%;
+  background-color: var(--red);
+  color: var(--ivory);
+  border-radius: 10px;
+  border: 3px solid var(--dark-red);
+}
+
+.form-title {
+  text-align: center;
+}
+
+.button {
+  background-color: var(--orange);
+  margin-top: 20px;
+}
+
+label {
+  color: var(--ivory);
+}
+
+.flash-error {
+  margin: 10px auto;
+  text-align: center;
+  border: 3px solid var(--blue);
+  width: 75%;
+  border-radius: 10p;
 }
