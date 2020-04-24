@@ -3,7 +3,6 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @id = params[:id]
   end
 
   def new
