@@ -2,7 +2,7 @@
   --red: #a01a2f;
   --blue: #081C35;
   --ivory: #FBF5F3;
-  --orange: #E28413; 
+  --orange: #E28413;
   --dark-red: #62110d;
 }
 
@@ -10,13 +10,22 @@ body {
   background-color: var(--ivory);
 }
 
-.tile {  
+.tile {
   background-color: var(--red);
   color: var(--ivory);
-  padding-top: 20px;   
-  margin: 20px; 
+  padding-top: 20px;
+  margin: 20px;
   border-radius: 10px;
   height: 250px;
+  border: 3px solid var(--dark-red);
+}
+
+.tile-show {
+  background-color: var(--red);
+  color: var(--ivory);
+  padding-top: 20px;
+  margin: 20px;
+  border-radius: 10px;
   border: 3px solid var(--dark-red);
 }
 
@@ -73,5 +82,5 @@ label {
   text-align: center;
   border: 3px solid var(--blue);
   width: 75%;
-  border-radius: 10p;
+  border-radius: 10px;
 }
