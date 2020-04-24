@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const RestaurantTile = (props) => {
+  //comment
   return (
     <div className="tile cell small-12 medium-4 large-4">
       <Link to={`/restaurants/${props.restaurant.id}`}>
