@@ -9,6 +9,7 @@ export const App = (props) => {
     <div>
       <BrowserRouter>
         <Switch>
+        <Route exact path='/' component={RestaurantIndexContainer} />
           <Route exact path='/restaurants' component={RestaurantIndexContainer} />
           <Route exact path='/restaurants/:id' component={RestaurantShowContainer} />
         </Switch>

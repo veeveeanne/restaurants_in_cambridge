@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { Redirect } from 'react-router-dom'
+
 import RestaurantShowTile from './RestaurantShowTile'
 
 const RestaurantShowContainer = (props) => {  
@@ -25,9 +27,19 @@ const RestaurantShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+  const deletePost = () => {
+    let id = props.match.params.id
+    fetch(`/api/v1/restaurants/${id}`, {
+      credentials: "same-origin",
+      method: "DELETE"
+    })
+    .done();
+  }
+  
   return (
     <div>
       <RestaurantShowTile restaurant={restaurant} />
+      <button onClick={deletePost}>Delete</button>
     </div>
   )
 }
