@@ -63,3 +63,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+RSpec.configure do |config|
+  # allows test user to sign in
+  config.include Devise::Test::IntegrationHelpers, type: :request
+end
