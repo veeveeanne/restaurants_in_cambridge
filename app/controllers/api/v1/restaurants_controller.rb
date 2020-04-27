@@ -1,15 +1,22 @@
 class Api::V1::RestaurantsController < ApplicationController
-  # before_action :authorize_user, except: [:index, :show]
+  protect_from_forgery with: :null_session
+  protect_from_forgery unless: -> { request.format.json? }
+  before_action :authorize_user, except: [:index, :show]
+  
   def index
     render json: Restaurant.all
   end
 
   def show
-    render json: Restaurant.find(params[:id])
+    restaurant = Restaurant.find(params[:id])
+    user = current_user
+    response_body = []
+    response_body.push(user)
+    response_body.push(restaurant)
+    render json: response_body
   end
 
   def destroy
-    binding.pry
     @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
     render json: {}, status: :no_content
