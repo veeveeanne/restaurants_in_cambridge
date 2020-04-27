@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :reviews
   
   validates :screen_name, presence: true, uniqueness: true
+
+  def admin?
+    role == "admin"
+  end
 end
