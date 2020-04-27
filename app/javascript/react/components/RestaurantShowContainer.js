@@ -24,8 +24,8 @@ const RestaurantShowContainer = (props) => {
       return response.json()
     })
     .then((body) => {
-      setCurrentUser(body[0])
-      setRestaurant(body[1])
+      setCurrentUser(body["user"])
+      setRestaurant(body["restaurant"])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])

@@ -10,10 +10,7 @@ class Api::V1::RestaurantsController < ApplicationController
   def show
     restaurant = Restaurant.find(params[:id])
     user = current_user
-    response_body = []
-    response_body.push(user)
-    response_body.push(restaurant)
-    render json: response_body
+    render json: { restaurant: restaurant, user: user }
   end
 
   def destroy
