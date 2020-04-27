@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :screen_name, presence: true, uniqueness: true
+
+  def admin?
+    role == "admin"
+  end
 end
