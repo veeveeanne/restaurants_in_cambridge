@@ -89,5 +89,5 @@ RSpec.describe User, type: :model do
     expect(user.errors.full_messages.to_sentence).to eq("Password is too short (minimum is 6 characters)")
   end
 
-
+  it { should have_many(:reviews) }
 end
