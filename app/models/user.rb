@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :screen_name, presence: true, uniqueness: true
 
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
   def admin?
     role == "admin"
   end
