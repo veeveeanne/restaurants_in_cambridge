@@ -10,11 +10,6 @@ const RestaurantShowContainer = (props) => {
   const [redirect, shouldRedirect] = useState(false)
 
   useEffect(() => {
-    fetch_restaurant_data()
-    fetch_reviews_for_restaurant()
-  }, [])
-
-  const fetch_restaurant_data = () => {
     let id = props.match.params.id
     fetch(`/api/v1/restaurants/${id}`)
     .then((response) => {
@@ -32,31 +27,10 @@ const RestaurantShowContainer = (props) => {
     .then((body) => {
       setCurrentUser(body["user"])
       setRestaurant(body["restaurant"])
+      setReviews(body["reviews"]["reviews"])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }
-
-  const fetch_reviews_for_restaurant = () => {
-    let id = props.match.params.id
-    fetch(`/api/v1/restaurants/${id}/reviews`)
-    .then((response) => {
-      if (response.ok) {
-        return response
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`
-        let error = new Error(errorMessage)
-        throw(error)
-      }
-    })
-    .then((response) => {
-      return response.json()
-    })
-    .then((body) => {
-      let array = body.reviews
-      setReviews(array)
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }
+  }, [])
 
   const confirmDelete = () => {
     let confirmMessage = confirm("Do you want to delete this item?")
