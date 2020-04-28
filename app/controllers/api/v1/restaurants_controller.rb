@@ -8,11 +8,9 @@ class Api::V1::RestaurantsController < ApplicationController
   end
 
   def show
-    restaurant = Restaurant.find(params[:id])
     user = current_user
     render json: {
-      restaurant: restaurant,
-      reviews: serialized_reviews_for_restaurant,
+      restaurant: serialized_restaurant,
       user: user
     }
   end
@@ -30,8 +28,8 @@ class Api::V1::RestaurantsController < ApplicationController
     end
   end
 
-  def serialized_reviews_for_restaurant
+  def serialized_restaurant
     restaurant = Restaurant.find(params[:id])
-    ActiveModelSerializers::SerializableResource.new(restaurant.reviews, each_serializer: ReviewSerializer)
+    ActiveModelSerializers::SerializableResource.new(restaurant, each_serializer: RestaurantShowSerializer)
   end
 end
