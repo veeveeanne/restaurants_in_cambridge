@@ -2,8 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import ReviewTile from './ReviewTile'
+import ReviewFormTile from './ReviewFormTile'
 
 const RestaurantShowTile = (props) => {
+  let addNewReview = props.addNewReview
   let reviewsArray = props.reviews.map((review) => {
     return(
       <ReviewTile
@@ -26,6 +28,9 @@ const RestaurantShowTile = (props) => {
       <div className="tile-reviews">
         <h3>Reviews</h3>
         {reviewsArray}
+        <ReviewFormTile
+          addNewReview={addNewReview}
+        />
       </div>
     </div>
   )

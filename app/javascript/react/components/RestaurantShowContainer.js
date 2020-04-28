@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 
 import RestaurantShowTile from './RestaurantShowTile'
+import ReviewFormTile from './ReviewFormTile'
 
 const RestaurantShowContainer = (props) => {
   const [restaurant, setRestaurant] = useState({})
@@ -58,6 +59,23 @@ const RestaurantShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
+  const addNewReview = (formPayload) => {
+    let id = props.match.params.id
+    fetch(`/api/v1/restaurants/${id}/reviews`, {
+      credentials: "same-origin",
+      method: "POST",
+      body: JSON.stringify(formPayload),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => response.json())
+    .then(formPayload => {
+      setReviews([...reviews, formPayload])
+    })
+  }
+
   const confirmDelete = () => {
     let confirmMessage = confirm("Do you want to delete this item?")
     if (confirmMessage === true) {
@@ -101,6 +119,7 @@ const RestaurantShowContainer = (props) => {
       <RestaurantShowTile
         restaurant={restaurant}
         reviews={reviews}
+        addNewReview={addNewReview}
       />
     </div>
   )
