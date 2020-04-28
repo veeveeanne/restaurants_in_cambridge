@@ -9,6 +9,9 @@ const RestaurantShowTile = (props) => {
       <ReviewTile
         key={review.id}
         review={review}
+        currentUser={props.currentUser}
+        handleVote={props.handleVote}
+        allVotes={props.allVotes}
       />
     )
   })

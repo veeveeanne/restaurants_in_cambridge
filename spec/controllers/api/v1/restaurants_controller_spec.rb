@@ -40,6 +40,7 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
     let!(:user_one) { User.create(email: "a1@b.com", screen_name: "User1234", password: "password") }
     let!(:review1) { Review.create(overall: 5, food: 5, service: 5, price: 4, ambience: 4, body: "The food and service were all wonderful. Loved the ambience too!", restaurant: restaurant_one, user: user_one) }
     let!(:review2) { Review.create(overall: 4, food: 4, service: 3, price: 3, body: "Great burgers here. Came here for a dinner with friends and had a great time.", restaurant: restaurant_one, user: user_one) }
+    let!(:vote) { Vote.create(review: review1, user: user_one, helpful: 1) }
 
     it "returns a successful response status and a content type of json" do
       get :show, params: {id: restaurant_one.id}
@@ -77,6 +78,10 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       expect(reviews_response[0]["price"]).to eq review1.price
       expect(reviews_response[0]["ambience"]).to eq review1.ambience
       expect(reviews_response[0]["body"]).to eq review1.body
+      expect(reviews_response[0]["votes"][0]["helpful"]).to eq vote.helpful
+      expect(reviews_response[0]["votes"][0]["review_id"]).to eq vote.review_id
+      expect(reviews_response[0]["votes"][0]["user_id"]).to eq vote.user_id
+      expect(reviews_response[0]["votes"][0]["id"]).to eq vote.id
 
       expect(reviews_response[1]["id"]).to eq review2.id
       expect(reviews_response[1]["user_screen_name"]).to eq user_one.screen_name

@@ -8,6 +8,7 @@ const RestaurantShowContainer = (props) => {
   const [reviews, setReviews] = useState([])
   const [currentUser, setCurrentUser] = useState({})
   const [redirect, shouldRedirect] = useState(false)
+  const [allVotes, setAllVotes] = useState([])
 
   useEffect(() => {
     let id = props.match.params.id
@@ -26,8 +27,9 @@ const RestaurantShowContainer = (props) => {
     })
     .then((body) => {
       setCurrentUser(body["user"])
-      setRestaurant(body["restaurant"])
-      setReviews(body["reviews"]["reviews"])
+      setRestaurant(body["restaurant"]["restaurant"])
+      setReviews(body["restaurant"]["restaurant"]["reviews"])
+      setAllVotes(body["votes"])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -69,12 +71,34 @@ const RestaurantShowContainer = (props) => {
     }
   }
 
+  const handleVote = (votePayload) => {
+    fetch(`/api/v1/votes`, {
+      credentials: "same-origin",
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(votePayload)
+    })
+    .then((response) => response.json())
+    .then((body) => {
+      setAllVotes([
+        ...allVotes,
+        body
+      ])
+    })
+  }
+
   return (
     <div>
       {deleteButton}
       <RestaurantShowTile
         restaurant={restaurant}
         reviews={reviews}
+        currentUser={currentUser}
+        handleVote={handleVote}
+        allVotes={allVotes}
       />
     </div>
   )

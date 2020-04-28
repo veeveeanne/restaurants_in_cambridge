@@ -11,7 +11,8 @@ class Api::V1::RestaurantsController < ApplicationController
     user = current_user
     render json: {
       restaurant: serialized_restaurant,
-      user: user
+      user: user,
+      votes: Vote.all
     }
   end
 
