@@ -6,6 +6,7 @@ import ReviewFormTile from './ReviewFormTile'
 
 const RestaurantShowTile = (props) => {
   let addNewReview = props.addNewReview
+  let currentUser = props.currentUser
   let reviewsArray = props.reviews.map((review) => {
     return(
       <ReviewTile
@@ -14,7 +15,7 @@ const RestaurantShowTile = (props) => {
       />
     )
   })
-  
+
   return (
     <div>
       <div className="tile-show">
@@ -27,10 +28,13 @@ const RestaurantShowTile = (props) => {
       </div>
       <div className="tile-reviews">
         <h3>Reviews</h3>
-        {reviewsArray}
         <ReviewFormTile
+          currentUser={currentUser}
           addNewReview={addNewReview}
         />
+        <div>
+          {reviewsArray}
+        </div>
       </div>
     </div>
   )

@@ -71,8 +71,8 @@ const RestaurantShowContainer = (props) => {
       }
     })
     .then((response) => response.json())
-    .then(formPayload => {
-      setReviews([...reviews, formPayload])
+    .then(body => {
+      setReviews([...reviews, body.review])
     })
   }
 
@@ -119,6 +119,7 @@ const RestaurantShowContainer = (props) => {
       <RestaurantShowTile
         restaurant={restaurant}
         reviews={reviews}
+        currentUser={currentUser}
         addNewReview={addNewReview}
       />
     </div>

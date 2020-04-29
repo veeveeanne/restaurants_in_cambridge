@@ -45,4 +45,38 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       expect(reviews_array[1]["body"]).to eq review2.body
     end
   end
+  
+  describe "POST#create" do 
+    it "creates a new review" do
+    restaurant1 = Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "http://www.bu.edu/files/2012/02/h_12-4650-MRBBURGER-012.jpg")
+
+      post_json = {
+        restaurant_id: restaurant1.id,
+        review: {
+        overall: 5,
+        food: 5,
+        service: 5,
+        price: 5,
+        ambience: 5,
+        body: "Good"
+      }}
+
+    prev_count = Review.count
+    post(:create, params: post_json)
+    binding.pry
+    expect(Review.count).to eq(prev_count + 1)
+    returned_json = JSON.parse(response.body)
+    expect(response.status).to eq 200
+    expect(response.content_type).to eq("application/json")
+
+    expect(returned_json).to be_kind_of(Hash)
+    expect(returned_json).to_not be_kind_of(Array)
+    expect(returned_json["overall"]).to eq 5
+    expect(returned_json["food"]).to eq 5
+    expect(returned_json["service"]).to eq 5
+    expect(returned_json["price"]).to eq 5
+    expect(returned_json["ambience"]).to eq 5
+    expect(returned_json["body"]).to eq "Good"
+    end
+  end
 end

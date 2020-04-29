@@ -8,11 +8,12 @@ class Api::V1::ReviewsController < ApplicationController
 
   def create
     restaurant = Restaurant.find(params[:restaurant_id])
+    
     user = current_user
     review = Review.new(review_params)
     review.restaurant = restaurant
     review.user = user
-
+    
     if review.save
       render json: { review: review }
     else
