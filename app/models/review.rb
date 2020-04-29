@@ -17,4 +17,12 @@ class Review < ApplicationRecord
   def formatted_date
     created_at.strftime("%-m/%-d/%Y")
   end
+
+  def total_votes 
+    votes.where(helpful: 1).count
+  end
+
+  def self.reviews_of_restaurant(id)
+    self.where(restaurant_id: id)
+  end
 end

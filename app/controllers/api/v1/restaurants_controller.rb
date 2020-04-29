@@ -12,7 +12,7 @@ class Api::V1::RestaurantsController < ApplicationController
     render json: {
       restaurant: serialized_restaurant,
       user: user,
-      votes: Vote.all
+      votes: Vote.by_current_user(user)
     }
   end
 

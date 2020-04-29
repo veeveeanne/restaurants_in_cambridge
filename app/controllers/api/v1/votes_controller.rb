@@ -6,26 +6,34 @@ class Api::V1::VotesController < ApplicationController
   def create
     user = current_user
     review = Review.find(params[:review_id])
-    @vote = Vote.new
-    @vote.helpful = params[:helpful]
-    @vote.user = user
-    @vote.review = review
-    @vote.save
-    render json: @vote
+    vote = Vote.new
+    vote.helpful = params[:helpful]
+    vote.user = user
+    vote.review = review
+    vote.save
+    render json: {
+      vote: vote,
+      reviews: serialized_reviews
+    }
   end
 
-  def edit
-    binding.pry
-    @vote = Vote.find(params[:id])
-    @vote.helpful = params[:something]
-    @vote.save
+  def update
+    vote = Vote.find(params[:id])
+    vote.helpful = params[:helpful]
+    vote.save
+    render json: {
+      votes: Vote.by_current_user(current_user),
+      reviews: serialized_reviews
+    }
   end
 
   def destroy
-    binding.pry
-    @vote = Vote.find(params[:id])
-    @vote.delete
-    render json: {}, status: :no_content
+    vote = Vote.find(params[:id])
+    vote.delete
+    render json: {
+      votes: Vote.by_current_user(current_user),
+      reviews: serialized_reviews
+    }
   end
 
   private
@@ -33,6 +41,11 @@ class Api::V1::VotesController < ApplicationController
     if !user_signed_in?
       raise ActionController::RoutingError.new("not found")
     end
+  end
+
+  def serialized_reviews
+    restaurant_id = Review.find(params["review_id"]).restaurant.id
+    ActiveModelSerializers::SerializableResource.new(Review.reviews_of_restaurant(restaurant_id), each_serializer: ReviewSerializer)
   end
 
 end

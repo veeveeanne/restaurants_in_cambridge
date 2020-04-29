@@ -8,7 +8,7 @@ const RestaurantShowContainer = (props) => {
   const [reviews, setReviews] = useState([])
   const [currentUser, setCurrentUser] = useState({})
   const [redirect, shouldRedirect] = useState(false)
-  const [allVotes, setAllVotes] = useState([])
+  const [userVotes, setUserVotes] = useState([])
 
   useEffect(() => {
     let id = props.match.params.id
@@ -29,7 +29,7 @@ const RestaurantShowContainer = (props) => {
       setCurrentUser(body["user"])
       setRestaurant(body["restaurant"]["restaurant"])
       setReviews(body["restaurant"]["restaurant"]["reviews"])
-      setAllVotes(body["votes"])
+      setUserVotes(body["votes"])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -71,23 +71,74 @@ const RestaurantShowContainer = (props) => {
     }
   }
 
+  const checkFetchMethod = (payload) => {
+    let method = {type: ""}
+
+    if (userVotes && userVotes.length > 0) {
+      userVotes.forEach((vote) => {
+        if (payload.review_id === vote.review_id && payload.helpful === vote.helpful) {
+          method.type = "delete"
+          method.vote_id = vote.id
+        } else if (payload.review_id === vote.review_id) {
+          method.type = "patch"
+          method.vote_id = vote.id
+        }
+      })
+    }
+    return method
+  }
+
   const handleVote = (votePayload) => {
-    fetch(`/api/v1/votes`, {
-      credentials: "same-origin",
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(votePayload)
-    })
-    .then((response) => response.json())
-    .then((body) => {
-      setAllVotes([
-        ...allVotes,
-        body
-      ])
-    })
+    let method = checkFetchMethod(votePayload)
+    if (method.type === "delete") {
+      fetch(`/api/v1/votes/${method.vote_id}`, {
+        credentials: "same-origin",
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(votePayload)
+      })
+      .then((response) => response.json())
+      .then((body) => {
+        setUserVotes(body.votes)
+        setReviews(body.reviews.reviews)
+      })
+    } else if (method.type === "patch") {
+      fetch(`/api/v1/votes/${method.vote_id}`, {
+        credentials: "same-origin",
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(votePayload)
+      })
+      .then((response) => response.json())
+      .then((body) => {
+        setUserVotes(body.votes)
+        setReviews(body.reviews.reviews)
+      })
+    } else {
+      fetch("/api/v1/votes", {
+        credentials: "same-origin",
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(votePayload)
+      })
+      .then((response) => response.json())
+      .then((body) => {
+        setUserVotes([
+          ...userVotes,
+          body.vote
+        ])
+        setReviews(body.reviews.reviews)
+      })
+    }
   }
 
   return (
@@ -98,7 +149,7 @@ const RestaurantShowContainer = (props) => {
         reviews={reviews}
         currentUser={currentUser}
         handleVote={handleVote}
-        allVotes={allVotes}
+        current_user_votes={userVotes}
       />
     </div>
   )
