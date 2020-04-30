@@ -31,7 +31,7 @@ const RestaurantShowTile = (props) => {
   return (
     <div>
       <div className="tile-show">
-        <img src={props.restaurant.picture_url} className="tile-image"/>
+        <img src={props.restaurant.picture_url} className="show-image"/>
         <h1>{props.restaurant.name}</h1>
         <p>{props.restaurant.address}</p>
         <p>{props.restaurant.city}</p>
@@ -39,12 +39,13 @@ const RestaurantShowTile = (props) => {
         <Link to = "/restaurants">Back to Restaurants</Link>
       </div>
       <div className="tile-reviews">
-        <h3>Reviews</h3>
+        <h3>Add a Review:</h3>
         <ReviewFormTile
           currentUser={currentUser}
           addNewReview={addNewReview}
         />
-        <div>
+        <div className="tile-show">
+        <h3>Reviews</h3>
           {reviewsArray}
         </div>
       </div>
