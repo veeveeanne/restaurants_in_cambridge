@@ -90,4 +90,6 @@ RSpec.describe User, type: :model do
   end
 
   it { should have_many(:reviews) }
+
+  it { should have_many(:votes) }
 end
