@@ -8,10 +8,22 @@ const RestaurantShowTile = (props) => {
   let addNewReview = props.addNewReview
   let currentUser = props.currentUser
   let reviewsArray = props.reviews.map((review) => {
+    let review_vote
+    if (props.current_user_votes && props.current_user_votes.length > 0) {
+      props.current_user_votes.forEach((vote) => {
+        if (vote.review_id === review.id) {
+          review_vote = vote
+        }
+      })
+    }
+
     return(
       <ReviewTile
         key={review.id}
         review={review}
+        currentUser={props.currentUser}
+        handleVote={props.handleVote}
+        vote={review_vote}
       />
     )
   })

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :votes, only: [:create, :update, :destroy]
       resources :restaurants, only: [:create, :index, :show, :destroy] do
         resources :reviews, only: [:create, :index]
       end
