@@ -54,13 +54,13 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       get :show, params: {id: restaurant_one.id}
 
       response_body = JSON.parse(response.body)
-      user_response = response_body["user"]
-      restaurant_response = response_body["restaurant"]["restaurant"]
-      reviews_response = response_body["restaurant"]["restaurant"]["reviews"]
-      votes_response = response_body["votes"]
+      user_response = response_body["restaurant"]["scope"]
+      restaurant_response = response_body["restaurant"]
+      reviews_response = response_body["restaurant"]["reviews"]
+      votes_response = response_body["restaurant"]["votes"]
 
-      expect(response_body.length).to equal 3
-      expect(restaurant_response.length).to equal 9
+      expect(response_body.length).to equal 1
+      expect(restaurant_response.length).to equal 11
       expect(reviews_response.length).to equal 2
 
       expect(restaurant_response["name"]).to eq restaurant_one.name

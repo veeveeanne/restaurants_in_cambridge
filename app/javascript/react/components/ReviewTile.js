@@ -34,8 +34,6 @@ const ReviewTile = (props) => {
         helpful: parseInt(event.target.id)
       }
       props.handleVote(payload)
-    } else {
-      alert("Please sign in to vote on a review")
     }
   }
 

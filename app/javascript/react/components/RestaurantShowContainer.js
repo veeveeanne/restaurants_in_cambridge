@@ -9,7 +9,7 @@ const RestaurantShowContainer = (props) => {
   const [currentUser, setCurrentUser] = useState({})
   const [redirect, shouldRedirect] = useState(false)
   const [userVotes, setUserVotes] = useState([])
-
+  
   useEffect(() => {
     let id = props.match.params.id
     fetch(`/api/v1/restaurants/${id}`)
@@ -26,10 +26,10 @@ const RestaurantShowContainer = (props) => {
       return response.json()
     })
     .then((body) => {
-      setCurrentUser(body["user"])
-      setRestaurant(body["restaurant"]["restaurant"])
-      setReviews(body["restaurant"]["restaurant"]["reviews"])
-      setUserVotes(body["votes"])
+      setCurrentUser(body["restaurant"]["scope"])
+      setRestaurant(body["restaurant"])
+      setReviews(body["restaurant"]["reviews"])
+      setUserVotes(body["restaurant"]["votes"])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])

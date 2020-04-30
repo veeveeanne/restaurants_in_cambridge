@@ -1,7 +1,7 @@
 class Api::V1::VotesController < ApplicationController
   protect_from_forgery with: :null_session
   protect_from_forgery unless: -> { request.format.json? }
-  before_action :authorize_user
+  before_action :authenticate_user!
 
   def create
     user = current_user
@@ -37,15 +37,8 @@ class Api::V1::VotesController < ApplicationController
   end
 
   private
-  def authorize_user
-    if !user_signed_in?
-      raise ActionController::RoutingError.new("not found")
-    end
-  end
-
   def serialized_reviews
     restaurant_id = Review.find(params["review_id"]).restaurant.id
     ActiveModelSerializers::SerializableResource.new(Review.reviews_of_restaurant(restaurant_id), each_serializer: ReviewSerializer)
   end
-
 end
