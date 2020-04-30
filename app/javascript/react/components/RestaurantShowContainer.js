@@ -27,8 +27,8 @@ const RestaurantShowContainer = (props) => {
     })
     .then((body) => {
       setCurrentUser(body["user"])
-      setRestaurant(body["restaurant"])
-      setReviews(body["reviews"]["reviews"])
+      setRestaurant(body["restaurant"]["restaurant"])
+      setReviews(body["restaurant"]["restaurant"]["reviews"])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -44,11 +44,22 @@ const RestaurantShowContainer = (props) => {
         "Content-Type": "application/json"
       }
     })
+    .then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`
+        let error = new Error(errorMessage)
+        throw(error)
+      }
+    })
     .then((response) => response.json())
     .then(body => {
       setReviews([...reviews, body.review])
     })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
+
 
   const confirmDelete = () => {
     let confirmMessage = confirm("Do you want to delete this item?")
