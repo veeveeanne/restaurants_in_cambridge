@@ -12,7 +12,7 @@ RSpec.describe Vote, type: :model do
       is_greater_than_or_equal_to(0)
   end
 
-  describe "#self.by_current_user" do
+  describe ".by_current_user" do
     it "should return an array of the votes that are by the current user" do
       user1 = FactoryBot.create(:user)
       user2 = FactoryBot.create(:user)

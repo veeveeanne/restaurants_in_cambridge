@@ -65,4 +65,15 @@ RSpec.describe Review, type: :model do
       expect(review.formatted_date).to eq review.created_at.strftime("%-m/%-d/%Y")
     end
   end
+  
+  describe ".reviews_of_restaurant" do
+    it "returns the reviews for a given restaurant" do
+      user = FactoryBot.create(:user)
+      restaurant =  Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "http://www.bu.edu/files/2012/02/h_12-4650-MRBBURGER-012.jpg")
+      review = Review.create(overall: 5, food: 5, service: 5, price: 4, ambience: 4, body: "The food and service were all wonderful. Loved the ambience too!", restaurant: restaurant, user: user) 
+
+      expect(Review.reviews_of_restaurant(restaurant.id).length).to eq 1
+      expect(Review.reviews_of_restaurant(restaurant.id)[0]).to eq review
+    end
+  end
 end
