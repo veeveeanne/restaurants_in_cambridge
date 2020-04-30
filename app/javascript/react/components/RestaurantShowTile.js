@@ -2,8 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import ReviewTile from './ReviewTile'
+import ReviewFormTile from './ReviewFormTile'
 
 const RestaurantShowTile = (props) => {
+  let addNewReview = props.addNewReview
+  let currentUser = props.currentUser
   let reviewsArray = props.reviews.map((review) => {
     let review_vote
     if (props.current_user_votes && props.current_user_votes.length > 0) {
@@ -24,7 +27,7 @@ const RestaurantShowTile = (props) => {
       />
     )
   })
-  
+
   return (
     <div>
       <div className="tile-show">
@@ -37,7 +40,13 @@ const RestaurantShowTile = (props) => {
       </div>
       <div className="tile-reviews">
         <h3>Reviews</h3>
-        {reviewsArray}
+        <ReviewFormTile
+          currentUser={currentUser}
+          addNewReview={addNewReview}
+        />
+        <div>
+          {reviewsArray}
+        </div>
       </div>
     </div>
   )

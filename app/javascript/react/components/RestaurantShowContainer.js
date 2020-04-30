@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 
 import RestaurantShowTile from './RestaurantShowTile'
+import ReviewFormTile from './ReviewFormTile'
 
 const RestaurantShowContainer = (props) => {
   const [restaurant, setRestaurant] = useState({})
@@ -9,7 +10,7 @@ const RestaurantShowContainer = (props) => {
   const [currentUser, setCurrentUser] = useState({})
   const [redirect, shouldRedirect] = useState(false)
   const [userVotes, setUserVotes] = useState([])
-  
+
   useEffect(() => {
     let id = props.match.params.id
     fetch(`/api/v1/restaurants/${id}`)
@@ -33,6 +34,34 @@ const RestaurantShowContainer = (props) => {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
+
+  const addNewReview = (formPayload) => {
+    let id = props.match.params.id
+    fetch(`/api/v1/restaurants/${id}/reviews`, {
+      credentials: "same-origin",
+      method: "POST",
+      body: JSON.stringify(formPayload),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`
+        let error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then((response) => response.json())
+    .then(body => {
+      setReviews([...reviews, body.review])
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
 
   const confirmDelete = () => {
     let confirmMessage = confirm("Do you want to delete this item?")
@@ -148,6 +177,7 @@ const RestaurantShowContainer = (props) => {
         restaurant={restaurant}
         reviews={reviews}
         currentUser={currentUser}
+        addNewReview={addNewReview}
         handleVote={handleVote}
         current_user_votes={userVotes}
       />
