@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :reviews
   
-  validates :screen_name, presence: true, uniqueness: true
+  validates :screen_name, presence: true, uniqueness: true 
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 

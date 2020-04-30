@@ -35,7 +35,7 @@ const RestaurantIndexContainer = props => {
       <div className="tile-container grid-x grid-margin-x">
           {restaurantArray}
       </div>
-      <a href="/restaurants/new">Add a new restaurant</a>
+      <a className="add" href="/restaurants/new">Add a new restaurant</a>
     </div>
   )
 }
