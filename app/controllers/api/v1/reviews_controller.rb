@@ -13,7 +13,6 @@ class Api::V1::ReviewsController < ApplicationController
     review = Review.new(review_params)
     review.restaurant = restaurant
     review.user = user
-    
     if review.save
       render json: { review: review }
     else
@@ -23,6 +22,6 @@ class Api::V1::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:overall, :food, :ambience, :service, :body)
+    params.require(:review).permit(:overall, :food, :ambience, :service, :price, :body)
   end
 end

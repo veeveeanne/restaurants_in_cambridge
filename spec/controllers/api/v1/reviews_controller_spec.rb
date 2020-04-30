@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ReviewsController, type: :controller do
+  
   describe "GET#index" do
     let!(:user) { FactoryBot.create(:user) }
     let!(:restaurant1) { Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "http://www.bu.edu/files/2012/02/h_12-4650-MRBBURGER-012.jpg") }
@@ -47,36 +48,39 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
   end
   
   describe "POST#create" do 
+    let!(:restaurant1) {Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "http://www.bu.edu/files/2012/02/h_12-4650-MRBBURGER-012.jpg")}
+    let!(:user1) {FactoryBot.create(:user)}
+    let!(:new_review_hash) { { review: { overall: 5,
+      food: 5,
+      service: 5,
+      price: 5,
+      ambience: 5,
+      body: "Good" }, restaurant_id: restaurant1.id } }
     it "creates a new review" do
-    restaurant1 = Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "http://www.bu.edu/files/2012/02/h_12-4650-MRBBURGER-012.jpg")
+      sign_in user1
+      prev_count = Review.count
+      post :create, params: new_review_hash, format: :json
+      new_count = Review.count
+      returned_json = JSON.parse(response.body)
+      
+      expect(new_count).to eq(prev_count + 1)
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+    end
 
-      post_json = {
-        restaurant_id: restaurant1.id,
-        review: {
-        overall: 5,
-        food: 5,
-        service: 5,
-        price: 5,
-        ambience: 5,
-        body: "Good"
-      }}
+    it "returns Json with new review information" do
+      sign_in user1
+      post :create, params: new_review_hash, format: :json
+      returned_json = JSON.parse(response.body)
 
-    prev_count = Review.count
-    post(:create, params: post_json)
-    binding.pry
-    expect(Review.count).to eq(prev_count + 1)
-    returned_json = JSON.parse(response.body)
-    expect(response.status).to eq 200
-    expect(response.content_type).to eq("application/json")
-
-    expect(returned_json).to be_kind_of(Hash)
-    expect(returned_json).to_not be_kind_of(Array)
-    expect(returned_json["overall"]).to eq 5
-    expect(returned_json["food"]).to eq 5
-    expect(returned_json["service"]).to eq 5
-    expect(returned_json["price"]).to eq 5
-    expect(returned_json["ambience"]).to eq 5
-    expect(returned_json["body"]).to eq "Good"
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+      expect(returned_json["review"]["overall"]).to eq 5
+      expect(returned_json["review"]["food"]).to eq 5
+      expect(returned_json["review"]["service"]).to eq 5
+      expect(returned_json["review"]["price"]).to eq 5
+      expect(returned_json["review"]["ambience"]).to eq 5
+      expect(returned_json["review"]["body"]).to eq "Good"
     end
   end
 end
