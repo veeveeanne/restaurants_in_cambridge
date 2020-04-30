@@ -8,13 +8,7 @@ class Api::V1::RestaurantsController < ApplicationController
   end
 
   def show
-    restaurant = Restaurant.find(params[:id])
-    user = current_user
-    render json: {
-      restaurant: restaurant,
-      reviews: serialized_reviews_for_restaurant,
-      user: user
-    }
+    render json: Restaurant.find(params[:id]), serializer: RestaurantShowSerializer
   end
 
   def destroy
@@ -28,10 +22,5 @@ class Api::V1::RestaurantsController < ApplicationController
     if !current_user.admin?
       raise ActionController::RoutingError.new("not found")
     end
-  end
-
-  def serialized_reviews_for_restaurant
-    restaurant = Restaurant.find(params[:id])
-    ActiveModelSerializers::SerializableResource.new(restaurant.reviews, each_serializer: ReviewSerializer)
   end
 end

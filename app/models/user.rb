@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reviews
-  
-  validates :screen_name, presence: true, uniqueness: true 
+  has_many :votes 
+
+  validates :screen_name, presence: true, uniqueness: true
 
   mount_uploader :profile_photo, ProfilePhotoUploader
 
