@@ -58,7 +58,7 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       restaurant_response = response_body["restaurant"]["restaurant"]
       reviews_response = response_body["restaurant"]["restaurant"]["reviews"]
       votes_response = response_body["votes"]
-      binding.pry
+
       expect(response_body.length).to equal 3
       expect(restaurant_response.length).to equal 9
       expect(reviews_response.length).to equal 2
@@ -93,6 +93,11 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       expect(user_response["email"]).to eq user_one.email
       expect(user_response["screen_name"]).to eq user_one.screen_name
       expect(user_response["role"]).to eq user_one.role
+
+      expect(votes_response[0]["helpful"]).to eq vote.helpful
+      expect(votes_response[0]["review_id"]).to eq vote.review_id
+      expect(votes_response[0]["user_id"]).to eq vote.user_id
+      expect(votes_response[0]["id"]).to eq vote.id
     end
   end
 end

@@ -38,6 +38,15 @@ RSpec.describe Api::V1::VotesController, type: :controller do
   end
 
   describe "DELETE#destroy" do
+
+    it "removes the specified vote from the database" do
+      sign_in user
+      previous_count = Vote.count
+      delete :destroy, params: {id: vote.id, review_id: vote.review.id}
+      new_count = Vote.count
+
+      expect(new_count).to eq (previous_count - 1)
+    end
     
   end
 end
