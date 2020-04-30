@@ -45,9 +45,9 @@ RSpec.describe Review, type: :model do
       is_less_than_or_equal_to(5)
   end
 
-  context "user_screen_name method" do
+  describe "#user_screen_name" do
     it "returns the screen name of the user who created the review" do
-      user = FactoryBot.create(:user) 
+      user = FactoryBot.create(:user)
       restaurant =  Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "http://www.bu.edu/files/2012/02/h_12-4650-MRBBURGER-012.jpg")
       review = Review.create(overall: 5, food: 5, service: 5, price: 4, ambience: 4, body: "The food and service were all wonderful. Loved the ambience too!", restaurant: restaurant, user: user)
 
@@ -55,9 +55,9 @@ RSpec.describe Review, type: :model do
     end
   end
 
-  context "formatted_date method" do
+  describe "#formatted_date" do
     it "returns a formatted date of created review" do
-      user = FactoryBot.create(:user) 
+      user = FactoryBot.create(:user)
       restaurant =  Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "http://www.bu.edu/files/2012/02/h_12-4650-MRBBURGER-012.jpg")
       review = Review.create(overall: 5, food: 5, service: 5, price: 4, ambience: 4, body: "The food and service were all wonderful. Loved the ambience too!", restaurant: restaurant, user: user)
 
