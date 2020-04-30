@@ -3,10 +3,11 @@ import { Redirect } from 'react-router-dom'
 
 import RestaurantShowTile from './RestaurantShowTile'
 
-const RestaurantShowContainer = (props) => {  
+const RestaurantShowContainer = (props) => {
   const [restaurant, setRestaurant] = useState({})
-  const [currentUser, setCurrentUser ] = useState({})
-  const [ redirect, shouldRedirect ] = useState(false)
+  const [reviews, setReviews] = useState([])
+  const [currentUser, setCurrentUser] = useState({})
+  const [redirect, shouldRedirect] = useState(false)
 
   useEffect(() => {
     let id = props.match.params.id
@@ -16,8 +17,8 @@ const RestaurantShowContainer = (props) => {
         return response
       } else {
         let errorMessage = `${response.status} (${response.statusText})`
-        let error = new Error(errorMessage);
-        throw(error);
+        let error = new Error(errorMessage)
+        throw(error)
       }
     })
     .then((response) => {
@@ -26,16 +27,18 @@ const RestaurantShowContainer = (props) => {
     .then((body) => {
       setCurrentUser(body["user"])
       setRestaurant(body["restaurant"])
+      setReviews(body["reviews"]["reviews"])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
-  
+
   const confirmDelete = () => {
     let confirmMessage = confirm("Do you want to delete this item?")
     if (confirmMessage === true) {
       deletePost()
     }
   }
+
   const deletePost = () => {
     let id = props.match.params.id
     fetch(`/api/v1/restaurants/${id}`, {
@@ -65,11 +68,14 @@ const RestaurantShowContainer = (props) => {
       deleteButton = ""
     }
   }
-  
+
   return (
     <div>
       {deleteButton}
-      <RestaurantShowTile restaurant={restaurant} />
+      <RestaurantShowTile
+        restaurant={restaurant}
+        reviews={reviews}
+      />
     </div>
   )
 }
