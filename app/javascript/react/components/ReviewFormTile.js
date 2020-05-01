@@ -61,55 +61,54 @@ const ReviewFormTile = (props) => {
       })
     }
   }
-  if (props.currentUser) {
-    return(
-      <form onSubmit={handleSubmit}>
-        <ErrorList errors={errors} />
-        <label htmlFor="overall">Overall
-          <select id="overall" value={newReview.overall} onChange={handleChange}>
+
+  return(
+    <form onSubmit={handleSubmit}>
+      <ErrorList errors={errors} />
+      <label htmlFor="overall">Overall
+        <select id="overall" value={newReview.overall} onChange={handleChange}>
+          <option></option>
+          {optionValues}
+        </select>
+      </label>
+      <label htmlFor="food">Food
+        <select id="food" value={newReview.food} onChange={handleChange}>
             <option></option>
             {optionValues}
           </select>
-        </label>
-        <label htmlFor="food">Food
-          <select id="food" value={newReview.food} onChange={handleChange}>
-              <option></option>
-              {optionValues}
-            </select>
-        </label>
-        <label htmlFor="ambience">Ambience
-        <select id="ambience" value={newReview.ambience} onChange={handleChange}>
-            <option></option>
-            {optionValues}
-          </select>
-        </label>
-        <label htmlFor="service">Service
-        <select id="service" value={newReview.service} onChange={handleChange}>
-            <option></option>
-            {optionValues}
-          </select>
-        </label>
-        <label htmlFor="price">Price
-        <select id="price" value={newReview.price} onChange={handleChange}>
-            <option></option>
-            {optionValues}
-          </select>
-        </label>
-        <label htmlFor="body">Body
-          <textarea
-            type="text"
-            name="body"
-            id="body"
-            value={newReview.body}
-            onChange={handleChange}
-          />
-        </label>
-        <input
-          type="submit" value="Submit"
+      </label>
+      <label htmlFor="ambience">Ambience
+      <select id="ambience" value={newReview.ambience} onChange={handleChange}>
+          <option></option>
+          {optionValues}
+        </select>
+      </label>
+      <label htmlFor="service">Service
+      <select id="service" value={newReview.service} onChange={handleChange}>
+          <option></option>
+          {optionValues}
+        </select>
+      </label>
+      <label htmlFor="price">Price
+      <select id="price" value={newReview.price} onChange={handleChange}>
+          <option></option>
+          {optionValues}
+        </select>
+      </label>
+      <label htmlFor="body">Body
+        <textarea
+          type="text"
+          name="body"
+          id="body"
+          value={newReview.body}
+          onChange={handleChange}
         />
-      </form>
-    )
-  }
+      </label>
+      <input
+        type="submit" value="Submit"
+      />
+    </form>
+  )
 }
 
 export default ReviewFormTile

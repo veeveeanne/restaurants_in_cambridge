@@ -30,7 +30,7 @@ const RestaurantShowTile = (props) => {
 
   let reviewForm = "Please sign in to add a review"
   if (currentUser) {
-    reviewForm = <ReviewFormTile currentUser={currentUser} addNewReview={addNewReview} />
+    reviewForm = <ReviewFormTile addNewReview={addNewReview} />
   }
 
   return (
