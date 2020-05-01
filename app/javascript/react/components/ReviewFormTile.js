@@ -24,12 +24,12 @@ const ReviewFormTile = (props) => {
 
   const validateForm = () => {
     let submitErrors = {}
-    const requiredFields = [ 'overall', 'body']
+    const requiredFields = ["overall", "body"]
     requiredFields.forEach((field) => {
-      if (newReview[field].trim() === '') {
+      if (newReview[field].trim() === "") {
         submitErrors = {
           ...submitErrors,
-          [field]: 'is blank'
+          [field]: 'must be filled in'
         }
       }
     })
@@ -51,76 +51,69 @@ const ReviewFormTile = (props) => {
       })
     }
   }
-  if (props.currentUser) {
-    return(
-      <form onSubmit={handleSubmit}>
-        <ErrorList errors={errors} />
-        <label htmlFor="overall">Overall
-          <input
-            type="text"
-            name="overall"
-            id="overall"
-            value={newReview.overall}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="food">Food
-          <input
-            type="text"
-            name="food"
-            id="food"
-            value={newReview.food}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="ambience">Ambience
-          <input
-            type="text"
-            name="ambience"
-            id="ambience"
-            value={newReview.ambience}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="service">Service
-          <input
-            type="text"
-            name="service"
-            id="service"
-            value={newReview.service}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="price">Price
-          <input
-            type="text"
-            name="price"
-            id="price"
-            value={newReview.price}
-            onChange={handleChange}
-          />
-        </label>
-        <label htmlFor="body">Body
-          <input
-            type="text"
-            name="body"
-            id="body"
-            value={newReview.body}
-            onChange={handleChange}
-          />
-        </label>
+
+  return(
+    <form onSubmit={handleSubmit}>
+      <ErrorList errors={errors} />
+      <label htmlFor="overall">Overall
         <input
-          type="submit" value="Submit"
+          type="text"
+          name="overall"
+          id="overall"
+          value={newReview.overall}
+          onChange={handleChange}
         />
-      </form>
-    )
-  } else {
-    return (
-      <div>
-        Please sign in to create a review
-      </div>
-    )
-  }
+      </label>
+      <label htmlFor="food">Food
+        <input
+          type="text"
+          name="food"
+          id="food"
+          value={newReview.food}
+          onChange={handleChange}
+        />
+      </label>
+      <label htmlFor="ambience">Ambience
+        <input
+          type="text"
+          name="ambience"
+          id="ambience"
+          value={newReview.ambience}
+          onChange={handleChange}
+        />
+      </label>
+      <label htmlFor="service">Service
+        <input
+          type="text"
+          name="service"
+          id="service"
+          value={newReview.service}
+          onChange={handleChange}
+        />
+      </label>
+      <label htmlFor="price">Price
+        <input
+          type="text"
+          name="price"
+          id="price"
+          value={newReview.price}
+          onChange={handleChange}
+        />
+      </label>
+      <label htmlFor="body">Body
+        <input
+          type="text"
+          name="body"
+          id="body"
+          value={newReview.body}
+          onChange={handleChange}
+        />
+      </label>
+      <input
+        type="submit" value="Submit"
+      />
+    </form>
+  )
 }
 
 export default ReviewFormTile

@@ -57,7 +57,10 @@ const RestaurantShowContainer = (props) => {
     })
     .then((response) => response.json())
     .then(body => {
-      setReviews([...reviews, body.review])
+      setReviews([
+        ...reviews,
+        body.review
+      ])
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
