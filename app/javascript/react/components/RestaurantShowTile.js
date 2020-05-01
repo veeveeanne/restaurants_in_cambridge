@@ -28,6 +28,11 @@ const RestaurantShowTile = (props) => {
     )
   })
 
+  let reviewForm = "Please sign in to add a review"
+  if (currentUser) {
+    reviewForm = <ReviewFormTile currentUser={currentUser} addNewReview={addNewReview} />
+  }
+
   return (
     <div>
       <div className="tile-show">
@@ -39,13 +44,9 @@ const RestaurantShowTile = (props) => {
         <Link to = "/restaurants">Back to Restaurants</Link>
       </div>
       <div className="tile-reviews">
-        <h3>Add a Review:</h3>
-        <ReviewFormTile
-          currentUser={currentUser}
-          addNewReview={addNewReview}
-        />
-        <div className="tile-show">
+        {reviewForm}
         <h3>Reviews</h3>
+        <div>
           {reviewsArray}
         </div>
       </div>

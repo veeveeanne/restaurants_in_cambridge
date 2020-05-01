@@ -1,7 +1,10 @@
-user1 = User.create(email: "Usergotmail@gmail.com", password: "123456", screen_name: "User1")
-user2 = User.create(email: "test@email.com", password: "abcdef", screen_name: "testUser")
+aidan = User.create(email: "aidan@email.com", password: "123456", screen_name: "aidan")
+james = User.create(email: "james@email.com", password: "123456", screen_name: "james")
+mike = User.create(email: "mike@email.com", password: "123456", screen_name: "mike")
+vivian = User.create(email: "vivian@email.com", password: "123456", screen_name: "vivian")
 
 restaurant1 = Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "http://www.bu.edu/files/2012/02/h_12-4650-MRBBURGER-012.jpg")
+<<<<<<< HEAD
 restaurant2 = Restaurant.create(name: "Alden & Harlow", address: "40 Brattle Street", city: "Cambridge", state: "MA", zip: "02138", picture_url: "https://lh3.googleusercontent.com/p/AF1QipP7aYIv_U9Phmx_YgZIoJHWqkERZBhOA21_B3gY=s1600-w420-h280")
 Restaurant.create(name: "The Mad Monkfish", address: "524 Massachusetts", city: "Cambridge", state: "MA", zip: "02139", picture_url: "https://images.happycow.net/venues/1024/73/99/hcmp73993_244001.jpeg")
 Restaurant.create(name: "Veggie Galaxy", address: "450 Massachusetts Avenue", city: "Cambridge", state: "MA", zip: "02139", picture_url: "https://polishedblogger.files.wordpress.com/2017/10/img_0308-1.jpg")
@@ -19,3 +22,31 @@ Restaurant.create(name: "Cafe Mami", address: "1815 Massachusetts Ave", city: "C
 # Vote.create(review: review1, user: user1, helpful: 1)
 # Vote.create(review: review1, user: user2, helpful: 0)
 
+=======
+restaurant2 = Restaurant.create(name: "Alden & Harlow", address: "40 Brattle Street", city: "Cambridge", state: "MA", zip: "02138", picture_url: "https://media.timeout.com/images/101617789/image.jpg", website: "http://www.aldenharlow.com/")
+restaurant3 = Restaurant.create(name: "Veggie Galaxy", address: "450 Massachusetts Avenue", city: "Cambridge", state: "MA", zip: "02139", picture_url: "https://polishedblogger.files.wordpress.com/2017/10/img_0308-1.jpg")
+restaurant4 = Restaurant.create(name: "Yume Wo Katare", address: "1923 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02140", picture_url: "https://s3-media0.fl.yelpcdn.com/bphoto/dwLeSf7fW87GvqP6DOOPBA/o.jpg")
+restaurant5 = Restaurant.create(name: "Little Donkey", address: "505 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02140", picture_url: "https://images.squarespace-cdn.com/content/v1/57826f50440243db4a4c1377/1543336171686-QAP4B1VO74PM9BG62J9P/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/NatalieAnnSchaefer_LittleDonkey_Interior02.jpg", website: "http://www.littledonkeybos.com/")
+restaurant6 = Restaurant.create(name: "Toscanini's Ice Cream", address: "159 First St", city: "Cambridge", state: "MA", zip: "02140", picture_url: "https://cdn10.bostonmagazine.com/wp-content/uploads/sites/2/2018/01/Toscanini-social.jpg", website: "https://www.tosci.com/")
+restaurant7 = Restaurant.create(name: "L.A. Burdick Handmade Chocolates", address: "52 Brattle St", city: "Cambridge", state: "MA", zip: "02140", picture_url: "https://chocolateclass.files.wordpress.com/2018/05/o1.jpg?w=383&h=287.jpg", website: "https://www.burdickchocolate.com")
+restaurant8 = Restaurant.create(name: "Café Luna", address: "612 Main St", city: "Cambridge", state: "MA", zip: "02140", picture_url: "https://1.bp.blogspot.com/-mKHyc6w_Fwg/WSMLMmOgREI/AAAAAAACz90/xt6DO3Q3Szct2mFxFNX7lcwYhjchvDd6wCLcB/s640/Cafe-Luna-Cambridge.jpg", website: "http://www.cafeluna-centralsq.com/")
+restaurant9 = Restaurant.create(name: "Cuchi Cuchi", address: "795 Main St", city: "Cambridge", state: "MA", zip: "02140", picture_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSn2iJy1W2zN4OzmzCvK6Qt5o6pDDX0RfQJeFahWgqlYcDiv_K6&usqp=CAU.jpg", website: "https://cuchicuchi.cc/")
+restaurant10 = Restaurant.create(name: "Russell House Tavern", address: "14 Jfk St", city: "Cambridge", state: "MA", zip: "02140", picture_url: "https://infatuation.imgix.net/media/images/guides/where-to-have-a-burger-at-the-bar-by-yourself/%C2%A9NatalieAnnSchaefer_RusselHouseTavern.jpg?auto=format&w=256.jpg", website: "https://russellhousecambridge.com/")
+restaurant11 = Restaurant.create(name: "Cafe Mami", address: "1815 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02140", picture_url: "https://s3-media0.fl.yelpcdn.com/bphoto/xtlAI4vG8LBkuUBuGOBf9g/o.jpg")
+restaurant12 = Restaurant.create(name: "Giulia", address: "1682 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "https://cdn.vox-cdn.com/thumbor/n2hp6IRa7YaCxeO-UbjLv25qmdw=/13x0:236x167/1200x800/filters:focal(13x0:236x167)/cdn.vox-cdn.com/uploads/chorus_image/image/39095258/z2Rafiki-Bistro.0.jpg", website: "http://www.giuliarestaurant.com/" )
+restaurant13 = Restaurant.create(name: "Oleana", address: "134 Hampshire St", city: "Cambridge", state: "MA", zip: "02139", picture_url: "https://i2.wp.com/www.thehealthytoast.com/wp-content/uploads/2016/08/Oleana.jpg?fit=1400%2C1050&ssl=1.jpg", website: "https://www.oleanarestaurant.com/" )
+restaurant14 = Restaurant.create(name: "Pammy's", address: "928 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02139", picture_url: "https://stackac.com/wp-content/uploads/2017/11/SM__3677_MED.jpg", website: "https://www.pammyscambridge.com/" )
+
+review1 = Review.create(overall: 5, food: 5, service: 5, price: 3, ambience: 5, body: "I love it here. My first time at Burdick was in Chicago, and I'm so happy to have this gem after moving to Boston. My favorite is to grab dinner around Burdick, and then come here for an after-dinner dessert date", restaurant: restaurant7, user: vivian)
+review2 = Review.create(overall: 5, food: 5, service: 5, price: 2, body: "I love the concept of the restaurant. It's usually busy, and though there's a line, trust me, it's worth the wait. It's also so much fun hearing each person share their unique dreams. The noodles were perfect and included a very generous serving of pork. The broth was rich and perfectly comforting.", restaurant: restaurant4, user: vivian)
+review3 = Review.create(overall: 4, body: "A cool concept restaurant and the food is good, with a few things to keep in mind: 1.The line starts just before 5pm, and the wait can be over 45 minutes 2.The place is cash only 3.You can share a dream at the end of the meal if you wish 4.You can choose to have no garlic, garlic, or extra garlic", restaurant: restaurant4, user: james)
+review4 = Review.create(overall: 4, food: 4, service: 4, price: 4, body: "My friends and I were on a 'best burgers' spree, and definitely had to try out the 'secret burger' here. I have to say, it did not disappoint and it's definitely one of the top picks.", restaurant: restaurant2, user: vivian)
+review5 = Review.create(overall: 4, food: 5, service: 3, body: "Came here for brunch on a Saturday and they were so busy. We ended up waiting for two hours. The food is great, but you have to wait in place for your table, so make sure to plan accordingly. The staff also seemed a little short tempered.", restaurant: restaurant8, user: vivian)
+review6 = Review.create(overall: 5, food: 5, service: 5, price: 4, body: "Best hot chocolate in town! The best part of winter in Cambridge", restaurant: restaurant7, user: aidan)
+review7 = Review.create(overall: 3, food: 4, service: 3, price: 5, body: "The wait for brunch here is intense and can be upwards of two hours. This is particularly hard because we have to wait at the restaurant, since they won't take your number and call you when it's your turn. The food is definitely good, but I'm not sure I'll return given the wait and service.", restaurant: restaurant8, user: james)
+
+Vote.create(review: review1, user: aidan, helpful: 1)
+Vote.create(review: review1, user: james, helpful: 1)
+Vote.create(review: review2, user: james, helpful: 1)
+Vote.create(review: review3, user: mike, helpful: 1)
+>>>>>>> ed8c5703047153fcaee475097fd43e9112f5c93a

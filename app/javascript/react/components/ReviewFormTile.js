@@ -13,9 +13,9 @@ const ReviewFormTile = (props) => {
     body: ""
   })
   const [ errors, setErrors ] = useState({})
-  
+
   let ratings = [1, 2, 3, 4, 5]
-  
+
   let optionValues = ratings.map((number) => {
     return(
       <option key={number}>
@@ -34,12 +34,12 @@ const ReviewFormTile = (props) => {
 
   const validateForm = () => {
     let submitErrors = {}
-    const requiredFields = [ 'overall', 'body']
+    const requiredFields = ["overall", "body"]
     requiredFields.forEach((field) => {
-      if (newReview[field].trim() === '') {
+      if (newReview[field].trim() === "") {
         submitErrors = {
           ...submitErrors,
-          [field]: "can't be blank"
+          [field]: 'must be filled in'
         }
       }
     })
@@ -108,12 +108,6 @@ const ReviewFormTile = (props) => {
           type="submit" value="Submit"
         />
       </form>
-    )
-  } else {
-    return (
-      <div>
-        Please sign in to create a review
-      </div>
     )
   }
 }
