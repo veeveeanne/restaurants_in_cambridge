@@ -134,28 +134,47 @@ label {
   font-size: smaller;
 }
 
-.nav-photo {
-  // position: absolute;
-  // display: inline-block;
-  left: 250px;
-  // vertical-align: left;
-  max-height: 10%;
-  max-width: 10%;
-  border-radius: 10px;
-}
-
-.nav {
+.nav,
+.top-bar ul {
   background-color: var(--red);
   color: var(--orange);
+}
+
+.top-bar-right {
+  width: 40%;
+
+  .menu {
+    float: right;
+
+    li {
+      align-self: center;
+    }
+
+    img {
+      width: 33%;
+      border-radius: 10px;
+    }
+
+    .screen-name {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      a {
+        margin-left: 1em;
+        padding: 0.7rem 1rem;
+        line-height: 1;
+      }
+    }
+  }
 }
 
 a {
   color: var(--orange);
   transition: all .5s linear;
-}
 
-a:hover {
-  color: var(--ivory)
+  &:hover {
+    color: var(--ivory)
+  }
 }
 
 .selected {
