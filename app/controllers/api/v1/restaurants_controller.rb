@@ -4,11 +4,11 @@ class Api::V1::RestaurantsController < ApplicationController
   before_action :authorize_user, except: [:index, :show]
 
   def index
-    render json: Restaurant.all
+    render json: {restaurants: Restaurant.all, user: current_user}
   end
 
   def show
-    render json: Restaurant.find(params[:id]), serializer: RestaurantShowSerializer
+    render json: Restaurant.find(params[:id])
   end
 
   def destroy

@@ -16,22 +16,27 @@ RSpec.describe Api::V1::RestaurantsController, type: :controller do
       get :index
 
       response_body = JSON.parse(response.body)
+      response_restaurants = response_body["restaurants"]
+      response_user = response_body["user"]
 
       expect(response_body.length).to eq 2
+      expect(response_restaurants.length).to eq 2
 
-      expect(response_body[0]["name"]).to eq restaurant_one.name
-      expect(response_body[0]["address"]).to eq restaurant_one.address
-      expect(response_body[0]["city"]).to eq restaurant_one.city
-      expect(response_body[0]["state"]).to eq restaurant_one.state
-      expect(response_body[0]["zip"]).to eq restaurant_one.zip
-      expect(response_body[0]["picture_url"]).to eq restaurant_one.picture_url
+      expect(response_restaurants[0]["name"]).to eq restaurant_one.name
+      expect(response_restaurants[0]["address"]).to eq restaurant_one.address
+      expect(response_restaurants[0]["city"]).to eq restaurant_one.city
+      expect(response_restaurants[0]["state"]).to eq restaurant_one.state
+      expect(response_restaurants[0]["zip"]).to eq restaurant_one.zip
+      expect(response_restaurants[0]["picture_url"]).to eq restaurant_one.picture_url
 
-      expect(response_body[1]["name"]).to eq restaurant_two.name
-      expect(response_body[1]["address"]).to eq restaurant_two.address
-      expect(response_body[1]["city"]).to eq restaurant_two.city
-      expect(response_body[1]["state"]).to eq restaurant_two.state
-      expect(response_body[1]["zip"]).to eq restaurant_two.zip
-      expect(response_body[1]["picture_url"]).to eq restaurant_two.picture_url
+      expect(response_restaurants[1]["name"]).to eq restaurant_two.name
+      expect(response_restaurants[1]["address"]).to eq restaurant_two.address
+      expect(response_restaurants[1]["city"]).to eq restaurant_two.city
+      expect(response_restaurants[1]["state"]).to eq restaurant_two.state
+      expect(response_restaurants[1]["zip"]).to eq restaurant_two.zip
+      expect(response_restaurants[1]["picture_url"]).to eq restaurant_two.picture_url
+
+      expect(response_user).to eq nil
     end
   end
 

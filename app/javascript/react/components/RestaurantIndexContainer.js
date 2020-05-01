@@ -4,7 +4,9 @@ import RestaurantTile from './RestaurantTile'
 import AddRestaurantLink from './AddRestaurantLink'
 
 const RestaurantIndexContainer = props => {
-  const [ restaurants, setRestaurants ] = useState([])
+  const [restaurants, setRestaurants] = useState([])
+  const [currentUser, setCurrentUser] = useState({})
+
   useEffect(() => {
     fetch('/api/v1/restaurants')
     .then((response) => {
@@ -17,10 +19,11 @@ const RestaurantIndexContainer = props => {
       }
     })
     .then((response) => {
-        return response.json()
+      return response.json()
     })
     .then((body) => {
-      setRestaurants(body)
+      setRestaurants(body.restaurants)
+      setCurrentUser(body.user)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -31,11 +34,16 @@ const RestaurantIndexContainer = props => {
     )
   })
 
+  let addRestaurantLink
+  if (currentUser && currentUser.role === "admin") {
+    addRestaurantLink = <AddRestaurantLink />
+  }
+
   return(
     <div className="grid-container">
       <div className="tile-container grid-x grid-margin-x">
           {restaurantArray}
-          <AddRestaurantLink />
+          {addRestaurantLink}
       </div>
     </div>
   )
