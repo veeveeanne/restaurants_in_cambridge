@@ -14,10 +14,20 @@ const ReviewFormTile = (props) => {
   })
   const [ errors, setErrors ] = useState({})
 
+  let ratings = [1, 2, 3, 4, 5]
+
+  let optionValues = ratings.map((number) => {
+    return(
+      <option key={number}>
+        {number}
+      </option>
+    )
+  })
+
   const handleChange = (event) => {
     setNewReview({
       ...newReview,
-      [event.currentTarget.name]:
+      [event.currentTarget.id]:
       event.currentTarget.value
     })
   }
@@ -56,52 +66,37 @@ const ReviewFormTile = (props) => {
     <form onSubmit={handleSubmit}>
       <ErrorList errors={errors} />
       <label htmlFor="overall">Overall
-        <input
-          type="text"
-          name="overall"
-          id="overall"
-          value={newReview.overall}
-          onChange={handleChange}
-        />
+        <select id="overall" value={newReview.overall} onChange={handleChange}>
+          <option></option>
+          {optionValues}
+        </select>
       </label>
       <label htmlFor="food">Food
-        <input
-          type="text"
-          name="food"
-          id="food"
-          value={newReview.food}
-          onChange={handleChange}
-        />
+        <select id="food" value={newReview.food} onChange={handleChange}>
+            <option></option>
+            {optionValues}
+          </select>
       </label>
       <label htmlFor="ambience">Ambience
-        <input
-          type="text"
-          name="ambience"
-          id="ambience"
-          value={newReview.ambience}
-          onChange={handleChange}
-        />
+      <select id="ambience" value={newReview.ambience} onChange={handleChange}>
+          <option></option>
+          {optionValues}
+        </select>
       </label>
       <label htmlFor="service">Service
-        <input
-          type="text"
-          name="service"
-          id="service"
-          value={newReview.service}
-          onChange={handleChange}
-        />
+      <select id="service" value={newReview.service} onChange={handleChange}>
+          <option></option>
+          {optionValues}
+        </select>
       </label>
       <label htmlFor="price">Price
-        <input
-          type="text"
-          name="price"
-          id="price"
-          value={newReview.price}
-          onChange={handleChange}
-        />
+      <select id="price" value={newReview.price} onChange={handleChange}>
+          <option></option>
+          {optionValues}
+        </select>
       </label>
       <label htmlFor="body">Body
-        <input
+        <textarea
           type="text"
           name="body"
           id="body"

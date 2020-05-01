@@ -18,7 +18,7 @@ class Review < ApplicationRecord
     created_at.strftime("%-m/%-d/%Y")
   end
 
-  def total_votes 
+  def total_votes
     votes.where(helpful: 1).count
   end
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import RestaurantTile from './RestaurantTile'
+import AddRestaurantLink from './AddRestaurantLink'
 
 const RestaurantIndexContainer = props => {
   const [ restaurants, setRestaurants ] = useState([])
@@ -34,8 +35,8 @@ const RestaurantIndexContainer = props => {
     <div className="grid-container">
       <div className="tile-container grid-x grid-margin-x">
           {restaurantArray}
+          <AddRestaurantLink />
       </div>
-      <a href="/restaurants/new">Add a new restaurant</a>
     </div>
   )
 }

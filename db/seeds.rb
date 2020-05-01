@@ -1,7 +1,7 @@
-aidan = User.create(email: "aidan@email.com", password: "123456", screen_name: "aidan")
-james = User.create(email: "james@email.com", password: "123456", screen_name: "james")
-mike = User.create(email: "mike@email.com", password: "123456", screen_name: "mike")
-vivian = User.create(email: "vivian@email.com", password: "123456", screen_name: "vivian")
+aidan = User.create(email: "aidan@email.com", password: "123456", screen_name: "aidan", role: "admin")
+james = User.create(email: "james@email.com", password: "123456", screen_name: "james", role: "admin")
+mike = User.create(email: "mike@email.com", password: "123456", screen_name: "mike", role: "admin")
+vivian = User.create(email: "vivian@email.com", password: "123456", screen_name: "vivian", role: "admin")
 
 restaurant1 = Restaurant.create(name: "Mr. Bartley", address: "1245 Massachusetts Ave", city: "Cambridge", state: "MA", zip: "02138", picture_url: "http://www.bu.edu/files/2012/02/h_12-4650-MRBBURGER-012.jpg")
 restaurant2 = Restaurant.create(name: "Alden & Harlow", address: "40 Brattle Street", city: "Cambridge", state: "MA", zip: "02138", picture_url: "https://media.timeout.com/images/101617789/image.jpg", website: "http://www.aldenharlow.com/")
