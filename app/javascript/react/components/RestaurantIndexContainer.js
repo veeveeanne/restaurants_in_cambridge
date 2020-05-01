@@ -4,7 +4,7 @@ import RestaurantTile from './RestaurantTile'
 import AddRestaurantLink from './AddRestaurantLink'
 
 const RestaurantIndexContainer = props => {
-  const [ restaurants, setRestaurants ] = useState([])
+  const [restaurants, setRestaurants] = useState([])
   const [currentUser, setCurrentUser] = useState({})
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const RestaurantIndexContainer = props => {
       }
     })
     .then((response) => {
-        return response.json()
+      return response.json()
     })
     .then((body) => {
       setRestaurants(body.restaurants)
