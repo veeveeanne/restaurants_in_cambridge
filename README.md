@@ -26,7 +26,6 @@ git clone https://github.com/veeveeanne/restaurants_in_cambridge.git
 
 ###### Create and setup the database
 ```
-bundle exec rake db:create
 bundle exec rake db:setup
 ```
 
