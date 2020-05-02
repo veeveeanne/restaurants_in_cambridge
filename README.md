@@ -1,5 +1,5 @@
 # Cambridge Eats
-A review site for restaurants in the city of Cambridge, MA
+A review site for restaurants in the city of Cambridge, MA  
 Visit the deployed application [here](http://cambridge-eats.herokuapp.com/)
 
 ## Authors
@@ -36,7 +36,7 @@ bundle exec rake db:setup
 bundle exec rails s
 yarn run start
 ```
-The application can be accessed via <http://localhost:3000>
+###### The application can be accessed via <http://localhost:3000>
 
 
 [![Codeship Status for veeveeanne/restaurants_in_cambridge](https://app.codeship.com/projects/efd17370-661f-0138-6019-7e4f61b5b52a/status?branch=master)](https://app.codeship.com/projects/393614)
