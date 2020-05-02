@@ -20,7 +20,7 @@ The setup steps expect the following tools/versions:
 - PostgreSQL 12
 
 ###### Checkout the repository
-`git clone https://github.com/veeveeanne/restaurants_in_cambridge.git`
+```git clone https://github.com/veeveeanne/restaurants_in_cambridge.git```
 
 ###### Create and setup the database
 ```
@@ -29,7 +29,7 @@ bundle exec rake db:setup
 ```
 
 ###### Run the test suite
-`bundle exec rspec`
+```bundle exec rspec```
 
 ###### Start the Rails server and webpack-dev-server
 ```
